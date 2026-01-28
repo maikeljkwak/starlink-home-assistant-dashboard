@@ -1,6 +1,6 @@
-# 📡 Starlink Home Assistant Dashboard
+# 📡 Starlink Home Assistant Card
 
-This Home Assistant dashboard provides a comprehensive overview of Starlink system status and network performance. It displays real-time connectivity state, uptime since last restart, dish orientation parameters (azimuth and elevation) with visual validation, obstruction detection, and Ethernet link health. Additionally, it includes interactive 24-hour graphs showing network latency and packet loss, as well as uplink and downlink bandwidth usage, allowing for detailed monitoring and troubleshooting over time.
+This Home Assistant card provides a comprehensive overview of Starlink system status and network performance. It displays real-time connectivity state, uptime since last restart, dish orientation parameters (azimuth and elevation) with visual validation, obstruction detection, and Ethernet link health. Additionally, it includes interactive 24-hour graphs showing network latency and packet loss, as well as uplink and downlink bandwidth usage, allowing for detailed monitoring and troubleshooting over time.
 
   <img src="images/screenshot.png" width="400">
 
@@ -16,13 +16,13 @@ This Home Assistant dashboard provides a comprehensive overview of Starlink syst
 
 ## ⚙️ Requirements
 
-To use this Starlink Home Assistant Dashboard, make sure your environment meets the following requirements:
+To use this Starlink Home Assistant Card, make sure your environment meets the following requirements:
 
 - **Home Assistant Core**: Version **2025.12** or later
 - **HACS**: To install required custom cards
 - **File Editor**: To upload the starlink logo
 - **Starlink Integration**: Provides entities like `binary_sensor.starlink_connectivity`, `sensor.starlink_ping`, `sensor.starlink_uplink_throughput`, etc.
-- **Custom Cards**: This dashboard relies on the following **custom cards**, which must be installed
+- **Custom Cards**: This card relies on the following **custom cards**, which must be installed
     - [`button-card`](https://github.com/custom-cards/button-card)
     - [`layout-card`](https://github.com/thomasloven/lovelace-layout-card)
     - [`apexcharts-card`](https://github.com/RomRider/apexcharts-card)
@@ -32,13 +32,13 @@ To use this Starlink Home Assistant Dashboard, make sure your environment meets 
 
 ## 🚀 Getting Started
 
-To use this dashboard:
+To use this card:
 
 1. Make sure HACS and File Editor are installed.
 2. Install all custom cards listed above via HACS
-3. Add the Starlink Integration and ensure all entities used in the /lovelace/starlink_dashboard.yaml are available, enabled and collecting data
+3. Add the Starlink Integration and ensure all entities used in the /lovelace/starlink_card.yaml are available, enabled and collecting data
 4. Using the File Editor, upload the file /images/starlink_logo.png to /www/images/
-5. In your dashboard, add a new manual card and paste the YAML code from /lovelace/starlink_dashboard.yaml
+5. In your dashboard, add a new manual card and paste the YAML code from /lovelace/starlink_card.yaml
 
 ## 👤 Author
 
@@ -51,6 +51,6 @@ Contributions, feedback, and suggestions are always welcome!
 
 This project is licensed under the **MIT License**.
 
-You are free to use, modify, and distribute this dashboard, provided that the original copyright notice and license are included.
+You are free to use, modify, and distribute this card, provided that the original copyright notice and license are included.
 
 See the [LICENSE](LICENSE) file for more details.
