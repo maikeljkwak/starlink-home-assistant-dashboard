@@ -2,7 +2,7 @@
 
 This Home Assistant dashboard provides a comprehensive overview of Starlink system status and network performance. It displays real-time connectivity state, uptime since last restart, dish orientation parameters (azimuth and elevation) with visual validation, obstruction detection, and Ethernet link health. Additionally, it includes interactive 24-hour graphs showing network latency and packet loss, as well as uplink and downlink bandwidth usage, allowing for detailed monitoring and troubleshooting over time.
 
-![Dashboard Screenshot](images/screenshot.png)
+  <img src="images/screenshot.png" width="700px">
 
 
 ## ✨ Features
@@ -10,7 +10,7 @@ This Home Assistant dashboard provides a comprehensive overview of Starlink syst
 - Real-time Starlink connectivity status
 - Uptime calculation since last restart
 - Dish azimuth and elevation with threshold-based visual indicators
-- Obstruction detection and Ethernet link health monitoring
+- Obstruction detection and Ethernet link health monitoring with visual indicators
 - Interactive 24-hour graphs for latency, packet loss, and bandwidth usage
 
 
