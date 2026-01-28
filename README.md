@@ -2,7 +2,7 @@
 
 This Home Assistant dashboard provides a comprehensive overview of Starlink system status and network performance. It displays real-time connectivity state, uptime since last restart, dish orientation parameters (azimuth and elevation) with visual validation, obstruction detection, and Ethernet link health. Additionally, it includes interactive 24-hour graphs showing network latency and packet loss, as well as uplink and downlink bandwidth usage, allowing for detailed monitoring and troubleshooting over time.
 
-  <img src="images/screenshot.png" width="700px">
+  <img src="images/screenshot.png" width="400">
 
 
 ## ✨ Features
@@ -18,9 +18,9 @@ This Home Assistant dashboard provides a comprehensive overview of Starlink syst
 
 To use this Starlink Home Assistant Dashboard, make sure your environment meets the following requirements:
 
-- **Home Assistant Core**: Version **2025.12** or later recommended.
-- **HACS**: To install custom cards
-- **File Editor**: To upload images
+- **Home Assistant Core**: Version **2025.12** or later
+- **HACS**: To install required custom cards
+- **File Editor**: To upload the starlink logo
 - **Starlink Integration**: Provides entities like `binary_sensor.starlink_connectivity`, `sensor.starlink_ping`, `sensor.starlink_uplink_throughput`, etc.
 - **Custom Cards**: This dashboard relies on the following **custom cards**, which must be installed
     - [`button-card`](https://github.com/custom-cards/button-card)
