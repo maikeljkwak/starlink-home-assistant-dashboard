@@ -1,0 +1,325 @@
+type: entities
+entities:
+  - type: custom:hui-element
+    card_type: custom:layout-card
+    layout_type: grid
+    layout:
+      grid-template-columns: 35% 65%
+    cards:
+      - type: custom:button-card
+        show_icon: false
+        show_name: false
+        show_state: false
+        custom_fields:
+          logo: |
+            <img src="/local/images/starlink_logo.png" style="max-width:130%;">
+        styles:
+          card:
+            - padding: 0px
+        card_mod:
+          style: |
+            :host {
+                --ha-card-border-width: 0px;
+              }
+            @media (prefers-color-scheme: dark) {
+              #logo img {
+                filter: invert(1);
+              }
+            }
+      - type: custom:hui-element
+        card_type: vertical-stack
+        cards:
+          - type: custom:button-card
+            entity: binary_sensor.starlink_connectivity
+            name: Estado
+            show_icon: true
+            show_name: true
+            show_state: true
+            icon: mdi:satellite-uplink
+            color: var(--primary-text-color)
+            state:
+              - value: "on"
+                state_display: Conectado
+              - value: "off"
+                state_display: Desconectado
+                styles:
+                  card:
+                    - background-color: red
+            styles:
+              grid:
+                - grid-template-areas: "\"i n s\""
+                - grid-template-columns: 15% 1fr 1fr
+              icon:
+                - height: 25px
+                - width: 30px
+              name:
+                - padding-left: 4%
+                - justify-self: start
+                - font-size: 14px
+              state:
+                - justify-self: end
+                - margin-right: 5%
+                - font-size: 14px
+          - type: custom:button-card
+            entity: sensor.starlink_last_restart
+            name: Uptime
+            show_icon: true
+            show_state: true
+            show_name: true
+            state_display: |
+              [[[
+                if (!entity.state || entity.state === 'unknown') return 'Desconocido';
+
+                const last = new Date(entity.state);
+                const now = new Date();
+                let diff = Math.floor((now - last) / 1000);
+
+                const days = Math.floor(diff / 86400);
+                diff = diff % 86400;
+                const hours = Math.floor(diff / 3600);
+                diff = diff % 3600;
+                const minutes = Math.floor(diff / 60);
+
+                let result = '';
+                if (days > 0) result += days + 'd ';
+                if (hours > 0 || days > 0) result += hours + 'h ';
+                result += minutes + 'm';
+                return result;
+              ]]]
+            styles:
+              grid:
+                - grid-template-areas: "\"i n s\""
+                - grid-template-columns: 15% 1fr 1fr
+              icon:
+                - height: 25px
+                - width: 30px
+              name:
+                - padding-left: 4%
+                - justify-self: start
+                - font-size: 14px
+              state:
+                - justify-self: end
+                - margin-right: 5%
+                - font-size: 14px
+  - type: custom:hui-element
+    card_type: custom:layout-card
+    layout_type: grid
+    layout:
+      grid-template-columns: 50% 50%
+    cards:
+      - type: custom:button-card
+        entity: binary_sensor.starlink_obstructed
+        show_icon: true
+        show_name: true
+        show_state: true
+        name: Obstrucciones
+        state:
+          - value: "on"
+            color: red
+            icon: mdi:alert-circle
+          - value: "off"
+            color: green
+        styles:
+          grid:
+            - grid-template-areas: "\"i n s\""
+            - grid-template-columns: 15% 1fr 1fr
+          icon:
+            - height: 25px
+            - width: 30px
+          name:
+            - padding-left: 4%
+            - justify-self: start
+            - font-size: 14px
+          state:
+            - justify-self: end
+            - margin-right: 5%
+            - font-size: 14px
+      - type: custom:button-card
+        entity: sensor.starlink_azimuth
+        name: Acimut
+        show_icon: true
+        show_state: true
+        show_name: true
+        styles:
+          grid:
+            - grid-template-areas: "\"i n s\""
+            - grid-template-columns: 13% 1fr 1fr
+          icon:
+            - height: 25px
+            - width: 30px
+            - color: |
+                [[[
+                  const v = Number(entity.state);
+                  if (v >= -52 && v <= -48) {
+                    return 'green';
+                  }
+                  return 'red';
+                ]]]
+          name:
+            - padding-left: 7%
+            - justify-self: start
+            - font-size: 14px
+          state:
+            - justify-self: end
+            - margin-right: 5%
+            - font-size: 14px
+      - type: custom:button-card
+        entity: binary_sensor.starlink_ethernet_speeds
+        name: Ethernet
+        show_icon: true
+        show_state: true
+        show_name: true
+        state:
+          - value: "on"
+            color: red
+            icon: mdi:alert-circle
+          - value: "off"
+            color: green
+        styles:
+          grid:
+            - grid-template-areas: "\"i n s\""
+            - grid-template-columns: 13% 1fr 1fr
+          icon:
+            - height: 25px
+            - width: 30px
+          name:
+            - padding-left: 7%
+            - justify-self: start
+            - font-size: 14px
+          state:
+            - justify-self: end
+            - margin-right: 5%
+            - font-size: 14px
+      - type: custom:button-card
+        entity: sensor.starlink_elevation
+        name: Elevacion
+        show_icon: true
+        show_state: true
+        show_name: true
+        styles:
+          grid:
+            - grid-template-areas: "\"i n s\""
+            - grid-template-columns: 13% 1fr 1fr
+          icon:
+            - height: 25px
+            - width: 30px
+            - color: |
+                [[[
+                  const v = Number(entity.state);
+                  if (v >= 66 && v <= 70) {
+                    return 'green';
+                  }
+                  return 'red';
+                ]]]
+          name:
+            - padding-left: 7%
+            - justify-self: start
+            - font-size: 14px
+          state:
+            - justify-self: end
+            - margin-right: 5%
+            - font-size: 14px
+  - type: custom:apexcharts-card
+    header:
+      title: Ping
+      show: true
+    hours_12: false
+    graph_span: 1d
+    update_interval: 5m
+    apex_config:
+      markers:
+        size:
+          - 0
+          - 3
+      chart:
+        height: 200
+        zoom:
+          enabled: true
+          type: x
+        toolbar:
+          show: true
+          tools:
+            download: false
+          autoSelected: pan
+      legend:
+        show: false
+    yaxis:
+      - id: ping
+        min: 0
+        max: 50
+        apex_config:
+          labels:
+            style:
+              colors: "#3498DB"
+            formatter: |
+              EVAL: (value) => { return value +"ms" }
+      - id: drop
+        opposite: true
+        min: 0
+        max: 100
+        apex_config:
+          labels:
+            style:
+              colors: "#FF9800"
+            formatter: |
+              EVAL: (value) => { return value +"%" }
+    all_series_config:
+      type: line
+      group_by:
+        func: max
+        duration: 2min
+    series:
+      - entity: sensor.starlink_ping
+        name: Latencia
+        color: "#3498DB"
+        yaxis_id: ping
+        stroke_width: 2
+      - entity: sensor.starlink_ping_drop_rate
+        name: Pérdidas
+        color: "#FF9800"
+        yaxis_id: drop
+        stroke_width: 0
+        transform: |
+          return entity.state > 5 ? entity.state : null
+  - type: custom:apexcharts-card
+    header:
+      title: Uso ancho de banda
+      show: true
+    hours_12: false
+    graph_span: 1d
+    update_interval: 5m
+    apex_config:
+      chart:
+        height: 200
+        zoom:
+          enabled: true
+          type: x
+        toolbar:
+          show: true
+          tools:
+            download: false
+          autoSelected: pan
+      legend:
+        show: false
+    yaxis:
+      - id: velocidad
+        min: 0
+        max: 500
+        apex_config:
+          labels:
+            formatter: |
+              EVAL: (value) => { return value +"Mb" }
+    all_series_config:
+      type: line
+      yaxis_id: velocidad
+      stroke_width: 2
+      group_by:
+        func: max
+        duration: 2min
+    series:
+      - entity: sensor.starlink_downlink_throughput
+        name: Descarga
+        color: "#3498DB"
+      - entity: sensor.starlink_uplink_throughput
+        name: Subida
+        color: "#FF9800"
